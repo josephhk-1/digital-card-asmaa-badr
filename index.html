@@ -10,22 +10,19 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content=""> <!-- Mettre l'URL de la carte une fois en ligne -->
+    <meta property="og:url" content="https://josephhk-1.github.io/digital-card-asmaa-badr/">
     <meta property="og:title" content="Asmaa BADR - Professeure de Français">
     <meta property="og:description" content="Contactez Asmaa BADR pour des cours de français et visez la réussite.">
-    <!-- IMPORTANT: Mettre l'URL complète de l'icone.png sur GitHub ici -->
-    <meta property="og:image" content="./icone.png"> 
+    <meta property="og:image" content="https://josephhk-1.github.io/digital-card-asmaa-badr/icone.png"> 
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content=""> <!-- Mettre l'URL de la carte une fois en ligne -->
+    <meta property="twitter:url" content="https://josephhk-1.github.io/digital-card-asmaa-badr/">
     <meta property="twitter:title" content="Asmaa BADR - Professeure de Français">
     <meta property="twitter:description" content="Contactez Asmaa BADR pour des cours de français et visez la réussite.">
-    <!-- IMPORTANT: Mettre l'URL complète de l'icone.png sur GitHub ici -->
-    <meta property="twitter:image" content="./icone.png">
+    <meta property="twitter:image" content="https://josephhk-1.github.io/digital-card-asmaa-badr/icone.png">
 
     <!-- Favicon (Icone de la carte) -->
-    <!-- IMPORTANT: Le fichier 'icone.png' doit être dans le même dossier -->
     <link rel="icon" type="image/png" href="./icone.png">
 
     <!-- Tailwind CSS -->
@@ -413,11 +410,6 @@
 
         // --- Initialize with default language based on location ---
         window.onload = () => {
-            // Update the meta tags with the current URL when the page loads
-            const currentUrl = window.location.href;
-            document.querySelector('meta[property="og:url"]').setAttribute('content', currentUrl);
-            document.querySelector('meta[property="twitter:url"]').setAttribute('content', currentUrl);
-
             fetch('https://get.geojs.io/v1/ip/country.json')
                 .then(response => response.json())
                 .then(data => {
