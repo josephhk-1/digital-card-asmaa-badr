@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO and Share Meta Tags -->
+    <title>Asmaa BADR - Professeure de Français</title>
+    <meta name="description" content="Carte de visite numérique de Asmaa BADR, professeure de français.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content=""> <!-- Mettre l'URL de la carte une fois en ligne -->
+    <meta property="og:title" content="Asmaa BADR - Professeure de Français">
+    <meta property="og:description" content="Contactez Asmaa BADR pour des cours de français et visez la réussite.">
+    <!-- IMPORTANT: Mettre l'URL complète de l'icone.png sur GitHub ici -->
+    <meta property="og:image" content="./icone.png"> 
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content=""> <!-- Mettre l'URL de la carte une fois en ligne -->
+    <meta property="twitter:title" content="Asmaa BADR - Professeure de Français">
+    <meta property="twitter:description" content="Contactez Asmaa BADR pour des cours de français et visez la réussite.">
+    <!-- IMPORTANT: Mettre l'URL complète de l'icone.png sur GitHub ici -->
+    <meta property="twitter:image" content="./icone.png">
+
+    <!-- Favicon (Icone de la carte) -->
+    <!-- IMPORTANT: Le fichier 'icone.png' doit être dans le même dossier -->
+    <link rel="icon" type="image/png" href="./icone.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins & Cairo for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define fonts for each language */
+        :lang(fr), :lang(en) { font-family: 'Poppins', sans-serif; }
+        :lang(ar) { font-family: 'Cairo', sans-serif; }
+
+        /* --- Animated Shapes & Gradient Background INSIDE the card --- */
+        #card-container {
+            background: linear-gradient(-45deg, #eef2f3, #d7e1ec, #b3c5d7, #eef2f3);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            border-radius: 1.5rem; /* Match card's border-radius */
+        }
+        .bg-shapes span {
+            position: absolute;
+            bottom: -50px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: floatUp 25s linear infinite;
+        }
+        .bg-shapes span:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-duration: 22s; }
+        .bg-shapes span:nth-child(2) { width: 40px; height: 40px; left: 20%; animation-duration: 18s; animation-delay: 5s; }
+        .bg-shapes span:nth-child(3) { width: 60px; height: 60px; left: 35%; animation-duration: 25s; }
+        .bg-shapes span:nth-child(4) { width: 30px; height: 30px; left: 50%; animation-duration: 15s; animation-delay: 2s; }
+        .bg-shapes span:nth-child(5) { width: 90px; height: 90px; left: 65%; animation-duration: 20s; }
+        .bg-shapes span:nth-child(6) { width: 50px; height: 50px; left: 85%; animation-duration: 16s; animation-delay: 7s; }
+
+        @keyframes floatUp { to { transform: translateY(-105vh) rotate(360deg); opacity: 0; } }
+        @keyframes popIn { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
+        .animate-pop-in { animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; }
+        
+        /* --- Toast & Modal --- */
+        #toast, #about-modal { transition: opacity 0.3s, transform 0.3s; }
+        .modal-backdrop { transition: opacity 0.3s; }
+        .modal-content { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
+        /* --- Language switcher --- */
+        .lang-btn { transition: transform 0.2s, box-shadow 0.2s; }
+        .lang-btn:hover { transform: scale(1.1); }
+        .lang-btn.active { transform: scale(1.1); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 bg-gray-100">
+
+    <div id="card-container" class="w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden relative z-10">
+        
+        <div class="bg-shapes">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- All content is wrapped to be above the background shapes -->
+        <div class="relative z-10">
+            <!-- Header -->
+            <div class="relative">
+                 <!-- IMPORTANT: Le fichier 'france.jpg' doit être dans le même dossier -->
+                <div class="h-28 bg-cover bg-center" style="background-image: url('./france.jpg');">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <div class="absolute top-4 right-4 flex space-x-1.5">
+                    <div class="w-2.5 h-4 bg-blue-600 rounded-sm shadow-md"></div>
+                    <div class="w-2.5 h-4 bg-white rounded-sm shadow-md"></div>
+                    <div class="w-2.5 h-4 bg-red-600 rounded-sm shadow-md"></div>
+                </div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+                    <!-- IMPORTANT: Le fichier 'Asmaa.jpg' doit être dans le même dossier -->
+                    <img src="./Asmaa.jpg" alt="Photo de profil de Asmaa BADR" class="w-32 h-32 rounded-full border-4 border-white shadow-lg object-cover animate-pop-in">
+                </div>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="absolute top-4 left-4 flex space-x-2 z-10">
+                <button onclick="setLanguage('fr')" class="lang-btn w-8 h-8 rounded-full bg-cover bg-center" style="background-image: url('https://flagcdn.com/w40/fr.png');" title="Français"></button>
+                <button onclick="setLanguage('ar')" class="lang-btn w-8 h-8 rounded-full bg-cover bg-center" style="background-image: url('https://flagcdn.com/w40/eg.png');" title="العربية (مصر)"></button>
+                <button onclick="setLanguage('en')" class="lang-btn w-8 h-8 rounded-full bg-cover bg-center" style="background-image: url('https://flagcdn.com/w40/gb.png');" title="English"></button>
+            </div>
+
+            <!-- Main Content -->
+            <div class="pt-20 pb-8 px-6 text-center">
+                <h1 id="name" class="text-3xl font-bold text-gray-800">Asmaa BADR</h1>
+                <p id="title" class="text-lg text-blue-600 font-semibold mt-1">Professeure de Français</p>
+                <p id="subtitle" class="text-sm text-gray-700 font-medium mt-2"></p>
+                <p id="description" class="text-gray-600 mt-4 text-sm"></p>
+
+                <!-- Action Buttons -->
+                <div class="mt-8 grid grid-cols-1 gap-3">
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <button id="addToContacts" class="w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-xl shadow-lg hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <span id="add-contact-btn"></span>
+                        </button>
+                        <button id="about-btn" class="w-full bg-white/70 text-blue-600 font-semibold py-3 px-4 rounded-xl shadow-lg border border-blue-200 hover:bg-white/90 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            <span id="about-btn-text"></span>
+                        </button>
+                    </div>
+                    
+                    <a href="tel:+201014941978" class="w-full bg-green-500 text-white font-semibold py-3 px-4 rounded-xl shadow-lg hover:bg-green-600 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3 animate-pulse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span id="call-me-btn"></span>
+                    </a>
+
+                    <a href="https://wa.me/201014941978" target="_blank" class="w-full bg-white/70 text-gray-800 font-semibold py-3 px-4 rounded-xl shadow-lg border border-gray-200 hover:bg-white/90 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3">
+                        <img src="https://i.ibb.co/4NnJ7tV/whatsapp.png" alt="WhatsApp Logo" class="w-6 h-6">
+                        <span id="contact-whatsapp-btn"></span>
+                    </a>
+                    <a href="https://www.facebook.com/asmaa.badr55/" target="_blank" class="w-full bg-white/70 text-gray-800 font-semibold py-3 px-4 rounded-xl shadow-lg border border-gray-200 hover:bg-white/90 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3">
+                        <img src="https://i.ibb.co/x7P2zYq/facebook.png" alt="Facebook Logo" class="w-6 h-6">
+                        <span id="contact-facebook-btn"></span>
+                    </a>
+                    <a href="https://www.instagram.com/asmaabadr06?igsh=b3djbTRodmd3Y3J3&utm_source=qr" target="_blank" class="w-full bg-white/70 text-gray-800 font-semibold py-3 px-4 rounded-xl shadow-lg border border-gray-200 hover:bg-white/90 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3">
+                        <img src="https://i.ibb.co/yW0k3xV/instagram.png" alt="Instagram Logo" class="w-6 h-6">
+                        <span id="contact-instagram-btn"></span>
+                    </a>
+                    <a href="https://t.me/+201014941978" target="_blank" class="w-full bg-white/70 text-gray-800 font-semibold py-3 px-4 rounded-xl shadow-lg border border-gray-200 hover:bg-white/90 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3">
+                        <img src="https://i.ibb.co/jZnCFD2/telegram.png" alt="Telegram Logo" class="w-6 h-6">
+                        <span id="contact-telegram-btn"></span>
+                    </a>
+
+                    <button id="shareButton" class="w-full bg-gray-200/80 text-gray-800 font-semibold py-3 px-4 rounded-xl hover:bg-gray-300/90 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" x2="12" y1="2" y2="15"></line></svg>
+                        <span id="share-btn"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm py-2 px-4 rounded-full opacity-0 transform translate-y-3 z-50">
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- About Me Modal -->
+    <div id="about-modal" class="fixed inset-0 z-40 items-center justify-center p-4 hidden">
+        <div id="modal-backdrop" class="absolute inset-0 bg-black/50 modal-backdrop opacity-0"></div>
+        <div id="modal-content" class="modal-content relative w-full max-w-lg bg-white rounded-2xl shadow-xl p-6 md:p-8 transform scale-95">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <h2 id="about-title" class="text-2xl font-bold text-blue-600 mb-4"></h2>
+            <div id="about-content" class="text-gray-600 space-y-4 text-justify"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- Translations Object ---
+        const translations = {
+            fr: {
+                title: "Professeure de Français",
+                subtitle: "Pour les cycles préparatoire et secondaire (général & langues)",
+                description: "Je donne des cours de français, n'hésitez pas à me contacter pour découvrir la beauté de cette langue et pour votre réussite dans la langue 100%.",
+                addContact: "Ajouter",
+                shareCard: "Partager la carte",
+                aboutMeBtn: "À propos",
+                callMe: "Appeler",
+                contactWhatsapp: "Contacter sur WhatsApp",
+                contactFacebook: "Retrouver sur Facebook",
+                contactInstagram: "Suivre sur Instagram",
+                contactTelegram: "Écrire sur Telegram",
+                aboutTitle: "Mon parcours, ma passion",
+                aboutContent: `<p>Mon parcours avec le français est une véritable histoire de passion. Titulaire d'une licence et d'un master spécialisé, j'ai dédié ma carrière à une seule mission : accompagner chaque élève vers la réussite.</p><p>Ma méthode va au-delà de la grammaire ; elle vise à éveiller la curiosité et à construire une confiance solide. Pour ceux qui ont soif d'apprendre, je promets plus qu'une leçon : une aventure qui vous fera tomber amoureux de la langue française !</p>`,
+                shareMessage: "Voici la carte de visite de Asmaa BADR.",
+                linkCopied: "Lien copié dans le presse-papiers !",
+                shareFailed: "Partage échoué. Lien copié."
+            },
+            ar: {
+                title: "أستاذة لغة فرنسية",
+                subtitle: "للمرحلة الإعدادية والثانوية العامة (عام-لغات)",
+                description: "أقدم دروسًا في اللغة الفرنسية، لا تترددوا في التواصل معي لاكتشاف جمال هذه اللغة ولضمان نجاحكم في اللغة بنسبة 100%.",
+                addContact: "إضافة",
+                shareCard: "مشاركة البطاقة",
+                aboutMeBtn: "عني",
+                callMe: "اتصل بي",
+                contactWhatsapp: "تواصل عبر واتساب",
+                contactFacebook: "تابعني على فيسبوك",
+                contactInstagram: "تابعني على انستغرام",
+                contactTelegram: "راسلني على تيليجرام",
+                aboutTitle: "رحلتي وشغفي",
+                aboutContent: `<p>رحلتي مع اللغة الفرنسية هي قصة شغف حقيقية. حاصلة على ليسانس وماجستير متخصص، كرست مسيرتي المهنية لمهمة واحدة: مرافقة كل طالب نحو النجاح.</p><p>طريقتي تتجاوز القواعد النحوية؛ فهي تهدف إلى إيقاظ الفضول وبناء ثقة قوية. ولأولئك المتعطشين للمعرفة، أعدكم بأكثر من مجرد درس: إنها مغامرة ستجعلكم تقعون في حب اللغة الفرنسية!</p>`,
+                shareMessage: "هذه هي بطاقة العمل الخاصة بأسماء بدر.",
+                linkCopied: "تم نسخ الرابط!",
+                shareFailed: "فشل في المشاركة. تم نسخ الرابط."
+            },
+            en: {
+                title: "Professor of French",
+                subtitle: "For preparatory and secondary levels (general & languages)",
+                description: "I give French lessons, do not hesitate to contact me to discover the beauty of this language and for your 100% success in the language.",
+                addContact: "Add",
+                shareCard: "Share Card",
+                aboutMeBtn: "About",
+                callMe: "Call Me",
+                contactWhatsapp: "Contact on WhatsApp",
+                contactFacebook: "Find on Facebook",
+                contactInstagram: "Follow on Instagram",
+                contactTelegram: "Write on Telegram",
+                aboutTitle: "My journey, my passion",
+                aboutContent: `<p>My journey with the French language is a true story of passion. With a specialized bachelor's and master's degree, I have dedicated my career to a single mission: to guide each student towards success.</p><p>My method goes beyond grammar; it aims to awaken curiosity and build solid confidence. For those who thirst for more knowledge, I promise more than just a lesson: an adventure that will make you fall in love with the French language!</p>`,
+                shareMessage: "Here is the business card of Asmaa BADR.",
+                linkCopied: "Link copied to clipboard!",
+                shareFailed: "Sharing failed. Link copied."
+            }
+        };
+
+        let currentLanguage = 'fr';
+
+        // --- UI Elements ---
+        const ui = {
+            html: document.documentElement,
+            title: document.getElementById('title'),
+            subtitle: document.getElementById('subtitle'),
+            description: document.getElementById('description'),
+            addContactBtn: document.getElementById('add-contact-btn'),
+            shareBtn: document.getElementById('share-btn'),
+            aboutBtnText: document.getElementById('about-btn-text'),
+            callMeBtn: document.getElementById('call-me-btn'),
+            contactWhatsappBtn: document.getElementById('contact-whatsapp-btn'),
+            contactFacebookBtn: document.getElementById('contact-facebook-btn'),
+            contactInstagramBtn: document.getElementById('contact-instagram-btn'),
+            contactTelegramBtn: document.getElementById('contact-telegram-btn'),
+            langButtons: document.querySelectorAll('.lang-btn'),
+            aboutModal: document.getElementById('about-modal'),
+            modalBackdrop: document.getElementById('modal-backdrop'),
+            modalContent: document.getElementById('modal-content'),
+            aboutTitle: document.getElementById('about-title'),
+            aboutContent: document.getElementById('about-content'),
+        };
+
+        // --- Language Switcher Function ---
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            const t = translations[lang];
+
+            ui.title.textContent = t.title;
+            ui.subtitle.textContent = t.subtitle;
+            ui.description.textContent = t.description;
+            ui.addContactBtn.textContent = t.addContact;
+            ui.shareBtn.textContent = t.shareCard;
+            ui.aboutBtnText.textContent = t.aboutMeBtn;
+            ui.callMeBtn.textContent = t.callMe;
+            ui.contactWhatsappBtn.textContent = t.contactWhatsapp;
+            ui.contactFacebookBtn.textContent = t.contactFacebook;
+            ui.contactInstagramBtn.textContent = t.contactInstagram;
+            ui.contactTelegramBtn.textContent = t.contactTelegram;
+            ui.aboutTitle.textContent = t.aboutTitle;
+            ui.aboutContent.innerHTML = t.aboutContent;
+
+            ui.html.lang = lang;
+            ui.html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            ui.langButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if ((lang === 'fr' && btn.title === 'Français') || (lang === 'ar' && btn.title.includes('العربية')) || (lang === 'en' && btn.title === 'English') ) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // --- Modal Control ---
+        const aboutBtn = document.getElementById('about-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        function openModal() {
+            ui.aboutModal.classList.remove('hidden');
+            ui.aboutModal.classList.add('flex');
+            setTimeout(() => {
+                ui.modalBackdrop.classList.remove('opacity-0');
+                ui.modalBackdrop.classList.add('opacity-100');
+                ui.modalContent.classList.remove('scale-95');
+                ui.modalContent.classList.add('scale-100');
+            }, 10);
+        }
+        function closeModal() {
+            ui.modalBackdrop.classList.remove('opacity-100');
+            ui.modalBackdrop.classList.add('opacity-0');
+            ui.modalContent.classList.remove('scale-100');
+            ui.modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                ui.aboutModal.classList.add('hidden');
+                ui.aboutModal.classList.remove('flex');
+            }, 300);
+        }
+        aboutBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        ui.modalBackdrop.addEventListener('click', closeModal);
+
+        // --- Toast Notification Function ---
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translate(-50%, 0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, 1.5rem)';
+            }, 3000);
+        }
+
+        // --- Add to Contacts Functionality ---
+        document.getElementById('addToContacts').addEventListener('click', function() {
+            const vcfData = `BEGIN:VCARD\nVERSION:3.0\nFN:Asmaa BADR\nN:BADR;Asmaa;;;\nTITLE:${translations[currentLanguage].title}\nTEL;TYPE=CELL,VOICE;VALUE=uri:tel:+201014941978\nURL:${window.location.href}\nEND:VCARD`;
+            const blob = new Blob([vcfData], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Asmaa_BADR.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // --- Share Functionality (with Fallback) ---
+        function copyToClipboardFallback(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            textArea.style.width = "2em";
+            textArea.style.height = "2em";
+            textArea.style.padding = 0;
+            textArea.style.border = "none";
+            textArea.style.outline = "none";
+            textArea.style.boxShadow = "none";
+            textArea.style.background = "transparent";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showToast(translations[currentLanguage].linkCopied);
+                } else {
+                    showToast(translations[currentLanguage].shareFailed);
+                }
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+                showToast(translations[currentLanguage].shareFailed);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        document.getElementById('shareButton').addEventListener('click', async () => {
+            const shareData = {
+                title: 'Asmaa BADR - Professeure de Français',
+                text: translations[currentLanguage].description,
+                url: window.location.href
+            };
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                } else {
+                    copyToClipboardFallback(window.location.href);
+                }
+            } catch (err) {
+                console.error("Share error, using fallback: ", err);
+                copyToClipboardFallback(window.location.href);
+            }
+        });
+
+        // --- Initialize with default language based on location ---
+        window.onload = () => {
+            // Update the meta tags with the current URL when the page loads
+            const currentUrl = window.location.href;
+            document.querySelector('meta[property="og:url"]').setAttribute('content', currentUrl);
+            document.querySelector('meta[property="twitter:url"]').setAttribute('content', currentUrl);
+
+            fetch('https://get.geojs.io/v1/ip/country.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.country === 'EG') {
+                        setLanguage('ar');
+                    } else {
+                        setLanguage('fr');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching location, defaulting to French.', error);
+                    setLanguage('fr'); // Fallback to French on error
+                });
+        };
+    </script>
+</body>
+</html>
